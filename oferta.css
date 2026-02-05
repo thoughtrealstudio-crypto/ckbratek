@@ -1,0 +1,185 @@
+/* Offer subpage – full flower offer by sections */
+
+.offer-page {
+  padding-bottom: 0;
+}
+
+.offer-hero {
+  padding: 100px 0 60px;
+  background: linear-gradient(180deg, var(--pink-very-light) 0%, var(--white) 100%);
+  text-align: center;
+}
+
+.offer-page-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--purple-dark);
+  margin-bottom: 16px;
+  font-family: 'Playfair Display', serif;
+}
+
+.offer-page-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Section */
+.offer-section {
+  padding: 80px 0;
+}
+
+.offer-section--alt {
+  background: var(--gradient-pink);
+}
+
+.offer-section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--purple-dark);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Playfair Display', serif;
+}
+
+.offer-section-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.offer-section-desc {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  margin-bottom: 48px;
+  max-width: 640px;
+}
+
+/* Items grid */
+.offer-items-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.offer-item {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(107, 76, 147, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(107, 76, 147, 0.06);
+}
+
+.offer-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(107, 76, 147, 0.15);
+}
+
+.offer-item-image {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--pink-very-light);
+}
+
+.offer-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.offer-item:hover .offer-item-image img {
+  transform: scale(1.08);
+}
+
+.offer-item-content {
+  padding: 24px 22px;
+}
+
+.offer-item-content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--purple-dark);
+  margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+}
+
+.offer-item-content p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.offer-item-price {
+  margin-top: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--purple-dark);
+}
+
+/* CTA block */
+.offer-cta {
+  padding: 80px 0 100px;
+  background: var(--gradient-purple);
+  text-align: center;
+}
+
+.offer-cta-text {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 28px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.offer-cta .btn-hero {
+  background: var(--white);
+  color: var(--purple-dark);
+}
+
+.offer-cta .btn-hero:hover {
+  background: var(--pink-very-light);
+}
+
+/* Responsive – offer page */
+@media (max-width: 1100px) {
+  .offer-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .offer-hero {
+    padding: 70px 0 50px;
+  }
+
+  .offer-page-title {
+    font-size: 2.2rem;
+  }
+
+  .offer-section-title {
+    font-size: 1.8rem;
+    flex-wrap: wrap;
+  }
+
+  .offer-items-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .offer-section {
+    padding: 56px 0;
+  }
+
+  .offer-section-desc {
+    margin-bottom: 36px;
+  }
+
+  .offer-cta {
+    padding: 56px 0 70px;
+  }
+}
