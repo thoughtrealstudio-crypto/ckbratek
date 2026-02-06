@@ -154,16 +154,26 @@
 
 @media (max-width: 768px) {
   .offer-hero {
-    padding: 70px 0 50px;
+    padding: 80px 0 50px;
   }
 
   .offer-page-title {
     font-size: 2.2rem;
+    padding: 0 4%;
+  }
+
+  .offer-page-subtitle {
+    font-size: 1.1rem;
+    padding: 0 4%;
   }
 
   .offer-section-title {
     font-size: 1.8rem;
     flex-wrap: wrap;
+  }
+
+  .offer-section-icon {
+    font-size: 1.5rem;
   }
 
   .offer-items-grid {
@@ -177,9 +187,100 @@
 
   .offer-section-desc {
     margin-bottom: 36px;
+    font-size: 1rem;
+  }
+
+  .offer-item-content {
+    padding: 20px;
+  }
+
+  .offer-item-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .offer-item-content p {
+    font-size: 0.9rem;
+  }
+
+  .offer-item-price {
+    font-size: 1rem;
   }
 
   .offer-cta {
     padding: 56px 0 70px;
+  }
+
+  .offer-cta-text {
+    font-size: 1.1rem;
+    padding: 0 4%;
+  }
+}
+
+@media (max-width: 480px) {
+  .offer-hero {
+    padding: 70px 0 40px;
+  }
+
+  .offer-page-title {
+    font-size: 1.8rem;
+    padding: 0 3%;
+  }
+
+  .offer-page-subtitle {
+    font-size: 1rem;
+    padding: 0 3%;
+  }
+
+  .offer-section {
+    padding: 45px 0;
+  }
+
+  .offer-section-title {
+    font-size: 1.5rem;
+  }
+
+  .offer-section-icon {
+    font-size: 1.3rem;
+  }
+
+  .offer-section-desc {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  .offer-items-grid {
+    gap: 20px;
+  }
+
+  .offer-item-content {
+    padding: 18px;
+  }
+
+  .offer-item-content h3 {
+    font-size: 1rem;
+  }
+
+  .offer-item-content p {
+    font-size: 0.85rem;
+  }
+
+  .offer-item-price {
+    font-size: 0.95rem;
+    margin-top: 12px;
+  }
+
+  .offer-cta {
+    padding: 45px 0 60px;
+  }
+
+  .offer-cta-text {
+    font-size: 1rem;
+    padding: 0 3%;
+    margin-bottom: 24px;
+  }
+
+  .offer-cta .btn {
+    padding: 14px 30px;
+    font-size: 0.9rem;
   }
 }

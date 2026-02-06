@@ -74,6 +74,51 @@ h1, h2, h3, .title-elegant, .logo-text {
   font-family: 'Playfair Display', serif;
 }
 
+/* Hamburger Menu Button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  position: relative;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: var(--purple-dark);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+  .hamburger.active .hamburger-line {
+    background-color: var(--purple-dark);
+  }
+
+  .hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .hamburger:focus {
+    outline: 2px solid var(--purple-medium);
+    outline-offset: 2px;
+  }
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -874,9 +919,15 @@ a.offer-card {
     gap: 50px;
   }
 
-  .perfect-gift-text {
+  .perfect-gift-text,
+  .freshly-picked-text {
     padding-right: 0;
     text-align: center;
+  }
+
+  .perfect-gift-image,
+  .freshly-picked-image {
+    margin-top: 30px;
   }
 
   .testimonials-grid {
@@ -903,20 +954,86 @@ a.offer-card {
 
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px 5%;
+    position: relative;
+  }
+
+  .hamburger {
+    display: flex;
   }
 
   .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--white);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 100px 30px 30px;
+    gap: 0;
+    box-shadow: -5px 0 20px rgba(107, 76, 147, 0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid rgba(107, 76, 147, 0.1);
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 20px 0;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .nav-links a:hover {
+    color: var(--purple-medium);
+    padding-left: 10px;
+  }
+
+  /* Overlay when menu is open */
+  .navbar::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  .navbar.menu-open::after {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
   }
 
   .hero {
     min-height: 70vh;
-    padding: 60px 5%;
+    padding: 80px 5% 60px;
   }
 
   .hero-title-small {
@@ -930,6 +1047,11 @@ a.offer-card {
   .hero-content {
     text-align: center;
     margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .hero-flower-decoration {
+    display: none;
   }
 
   .title-bold {
@@ -953,13 +1075,27 @@ a.offer-card {
   }
 
   .rating-overlay {
-    padding: 40px 30px;
-    margin: 0 20px;
+    padding: 40px 25px;
+    margin: 0 15px;
+    border-radius: 20px;
+  }
+
+  .rating-title {
+    font-size: 1.8rem;
+  }
+
+  .stars {
+    font-size: 2rem;
   }
 
   .history-content {
-    padding: 40px 30px;
-    margin: 0 20px;
+    padding: 40px 25px;
+    margin: 0 15px;
+    border-radius: 20px;
+  }
+
+  .history-title {
+    font-size: 2.2rem;
   }
 
   .footer-brand-name {
@@ -972,18 +1108,77 @@ a.offer-card {
   }
 
   .footer-image {
-    width: 250px;
-    height: 350px;
+    width: 200px;
+    height: 300px;
+    right: 0;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .container {
+    padding: 0 4%;
+  }
+
+  .quality-gallery {
+    gap: 20px;
+  }
+
+  .testimonials {
+    padding: 80px 0;
+  }
+
+  .testimonials-title {
+    margin-bottom: 50px;
+  }
+
+  .offer {
+    padding: 80px 0;
+  }
+
+  .offer-title {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
   }
 }
 
 @media (max-width: 480px) {
+  .navbar {
+    padding: 15px 4%;
+  }
+
+  .logo-main {
+    font-size: 0.8rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .hero {
+    min-height: 60vh;
+    padding: 70px 4% 50px;
+  }
+
   .hero-title-large {
     font-size: 2.5rem;
   }
 
   .hero-title-small {
     font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    padding: 14px 30px;
+    font-size: 0.9rem;
   }
 
   .title-bold {
@@ -994,8 +1189,125 @@ a.offer-card {
     font-size: 1.4rem;
   }
 
+  .section-title-large span {
+    font-size: 1.5rem;
+  }
+
+  .section-title-large .title-elegant {
+    font-size: 1.3rem;
+  }
+
+  .perfect-gift,
+  .freshly-picked {
+    padding: 60px 0;
+  }
+
+  .testimonials {
+    padding: 60px 0;
+  }
+
+  .testimonials-title .title-bold {
+    font-size: 1.8rem;
+  }
+
+  .testimonials-title .title-elegant {
+    font-size: 1.6rem;
+  }
+
+  .testimonial-card {
+    padding: 30px 25px;
+  }
+
+  .rating-overlay {
+    padding: 30px 20px;
+    margin: 0 10px;
+  }
+
+  .rating-title {
+    font-size: 1.5rem;
+  }
+
+  .stars {
+    font-size: 1.8rem;
+  }
+
+  .quality-proof {
+    padding: 60px 0;
+  }
+
+  .quality-title .title-bold {
+    font-size: 2rem;
+  }
+
+  .quality-title .title-elegant {
+    font-size: 1.8rem;
+  }
+
+  .quality-description {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+
+  .history {
+    padding: 60px 0;
+  }
+
+  .history-content {
+    padding: 30px 20px;
+    margin: 0 10px;
+  }
+
+  .history-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .history-text {
+    font-size: 1rem;
+  }
+
+  .offer {
+    padding: 60px 0;
+  }
+
+  .offer-title {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+  }
+
+  .offer-card-title {
+    font-size: 1.3rem;
+  }
+
+  .footer {
+    padding: 60px 4% 30px;
+    min-height: 400px;
+  }
+
   .footer-brand-name {
     font-size: 2.5rem;
+  }
+
+  .footer-info {
+    gap: 15px;
+  }
+
+  .footer-info p {
+    font-size: 0.9rem;
+  }
+
+  .footer-image {
+    width: 150px;
+    height: 250px;
+  }
+
+  .container {
+    padding: 0 3%;
+  }
+
+  .nav-links {
+    width: 85%;
+    padding: 90px 25px 25px;
   }
 }
 

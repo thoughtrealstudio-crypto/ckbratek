@@ -2,6 +2,7 @@
 <html lang="pl">
 
 <head>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pełna Oferta | Centrum Kwiatowe Bratek</title>
@@ -20,6 +21,11 @@
         <span class="logo-main">Centrum Kwiatowe</span>
         <span class="logo-text">Bratek</span>
       </div>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
       <ul class="nav-links">
         <li><a href="index.html">Strona Główna</a></li>
         <li><a href="index.html#historia">Nasza Historia</a></li>
@@ -45,7 +51,8 @@
           <span class="offer-section-icon">🕊️</span>
           Bukiety żałobne
         </h2>
-        <p class="offer-section-desc">Wiązanki, wieńce i kompozycje pełne szacunku – pomagamy pożegnać bliskich w piękny sposób.</p>
+        <p class="offer-section-desc">Wiązanki, wieńce i kompozycje pełne szacunku – pomagamy pożegnać bliskich w piękny
+          sposób.</p>
         <div class="offer-items-grid">
           <article class="offer-item">
             <div class="offer-item-image">
@@ -98,7 +105,8 @@
           <span class="offer-section-icon">👰</span>
           Bukiety ślubne
         </h2>
-        <p class="offer-section-desc">Od bukietu panny młodej po dekoracje sali – kompleksowa oprawa florystyczna ślubu.</p>
+        <p class="offer-section-desc">Od bukietu panny młodej po dekoracje sali – kompleksowa oprawa florystyczna ślubu.
+        </p>
         <div class="offer-items-grid">
           <article class="offer-item">
             <div class="offer-item-image">
@@ -305,7 +313,8 @@
 
     <section class="offer-cta">
       <div class="container">
-        <p class="offer-cta-text">Nie znalazłeś tego, czego szukasz? Zadzwoń lub napisz – przygotujemy ofertę na zamówienie.</p>
+        <p class="offer-cta-text">Nie znalazłeś tego, czego szukasz? Zadzwoń lub napisz – przygotujemy ofertę na
+          zamówienie.</p>
         <a href="index.html#kontakt" class="btn btn-hero">Skontaktuj się</a>
       </div>
     </section>
@@ -326,6 +335,68 @@
       <img src="images/footer.png" alt="Kwiaty">
     </div>
   </footer>
+
+  <script>
+    // Hamburger menu toggle
+    (function () {
+      var hamburger = document.querySelector('.hamburger');
+      var navLinks = document.querySelector('.nav-links');
+      var navbar = document.querySelector('.navbar');
+      var body = document.body;
+
+      if (!hamburger || !navLinks) return;
+
+      hamburger.addEventListener('click', function () {
+        var isActive = hamburger.classList.contains('active');
+        
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        navbar.classList.toggle('menu-open');
+        hamburger.setAttribute('aria-expanded', !isActive);
+        
+        // Prevent body scroll when menu is open
+        if (!isActive) {
+          body.style.overflow = 'hidden';
+        } else {
+          body.style.overflow = '';
+        }
+      });
+
+      // Close menu when clicking on a link
+      var links = navLinks.querySelectorAll('a');
+      links.forEach(function (link) {
+        link.addEventListener('click', function () {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+          navbar.classList.remove('menu-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          body.style.overflow = '';
+        });
+      });
+
+      // Close menu when clicking on overlay
+      navbar.addEventListener('click', function (e) {
+        if (e.target === navbar && navbar.classList.contains('menu-open')) {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+          navbar.classList.remove('menu-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          body.style.overflow = '';
+        }
+      });
+
+      // Close menu on window resize if it's larger than 768px
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 768) {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+          navbar.classList.remove('menu-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          body.style.overflow = '';
+        }
+      });
+    })();
+  </script>
 
 </body>
 
